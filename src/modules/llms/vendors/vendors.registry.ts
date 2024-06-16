@@ -11,6 +11,7 @@ import { ModelVendorOpenAI } from './openai/openai.vendor';
 import { ModelVendorOpenRouter } from './openrouter/openrouter.vendor';
 import { ModelVendorPerplexity } from './perplexity/perplexity.vendor';
 import { ModelVendorTogetherAI } from './togetherai/togetherai.vendor';
+import { ModelVendorAzureSearch } from './azuresearch/azsearch.vendor';
 
 import type { IModelVendor } from './IModelVendor';
 import { DLLMId, DModelSource, DModelSourceId, findLLMOrThrow, findSourceOrThrow } from '../store-llms';
@@ -28,23 +29,14 @@ export type ModelVendorId =
   | 'openai'
   | 'openrouter'
   | 'perplexity'
+  | 'azsearch'
   | 'togetherai';
 
 /** Global: Vendor Instances Registry **/
 const MODEL_VENDOR_REGISTRY: Record<ModelVendorId, IModelVendor> = {
-  anthropic: ModelVendorAnthropic,
   azure: ModelVendorAzure,
-  googleai: ModelVendorGemini,
-  groq: ModelVendorGroq,
-  lmstudio: ModelVendorLMStudio,
-  localai: ModelVendorLocalAI,
-  mistral: ModelVendorMistral,
-  ollama: ModelVendorOllama,
-  oobabooga: ModelVendorOoobabooga,
   openai: ModelVendorOpenAI,
-  openrouter: ModelVendorOpenRouter,
-  perplexity: ModelVendorPerplexity,
-  togetherai: ModelVendorTogetherAI,
+  azsearch: ModelVendorAzureSearch
 } as Record<string, IModelVendor>;
 
 const MODEL_VENDOR_DEFAULT: ModelVendorId = 'openai';
